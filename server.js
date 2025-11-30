@@ -15,15 +15,11 @@ if (!dbURL) {
   process.exit(1);
 }
 
-mongoose
-  .connect(dbURL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => console.log("✅ MongoDB Connected"))
-  .catch((err) => {
-    console.log("❌ DB Connection Error:", err.message);
-  });
+mongoose.connect(process.env.MONGODB_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
+
 
 // ---------------- Schema & Model ----------------
 const todoSchema = new mongoose.Schema({
