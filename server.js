@@ -15,10 +15,9 @@ if (!dbURL) {
   process.exit(1);
 }
 
-mongoose.connect(process.env.MONGODB_URL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-});
+mongoose.connect(process.env.MONGODB_URL)
+  .then(() => console.log("✅ MongoDB Connected Successfully"))
+  .catch((err) => console.error("❌ DB Connection Error:", err));
 
 
 // ---------------- Schema & Model ----------------
